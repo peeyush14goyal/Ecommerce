@@ -1,0 +1,99 @@
+.react-datepicker-wrapper {
+    width: 100% !important;
+}
+
+.line-loader {
+    height: 4px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #ddd;
+}
+
+.line-loader:before {
+    display: block;
+    position: absolute;
+    content: "";
+    left: -200px;
+    width: 200px;
+    height: 4px;
+    background-color: #007bff;
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {
+        left: -200px;
+        width: 30%;
+    }
+    50% {
+        width: 30%;
+    }
+    70% {
+        width: 70%;
+    }
+    80% {
+        left: 50%;
+    }
+    95% {
+        left: 120%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+.body-loading {
+    position: fixed;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .9);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    color: #fff;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: none;
+}
+
+.body-loading.loader-active {
+    display: block;
+}
+
+.body-loading::after {
+    content: "";
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    border: 8px solid #fff;
+    border-left-color: transparent;
+    border-radius: 50%;
+    top: calc(50% + 18px);
+    left: calc(50% - 24px);
+    animation: rotation 1.2s linear infinite;
+}
+
+.body-loading::before {
+    content: 'Loading...';
+    position: fixed;
+    top: calc(50% - 18px);
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(359deg)
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
