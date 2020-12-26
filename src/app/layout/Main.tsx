@@ -10,6 +10,10 @@ const ProductFormContainer = lazy(
 const OrderContainer = lazy(
   () => import("../../features/order/OrderContainer")
 );
+
+const OrderEditComponent = lazy(
+  () => import("../../features/order/OrderEditContainer")
+);
 import HeaderComponent from "../../app/common/main/HeaderComponent";
 import DashboardPage from "../../features/dashboard/DashboardPage";
 import CustomerPage from "../../features/customer/CustomerPage";
@@ -30,7 +34,7 @@ class Main extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() { }
+  componentDidMount() {}
 
   render() {
     return (
@@ -53,6 +57,7 @@ class Main extends React.Component {
               <Route path={`/orders`} component={OrderContainer} />
               <Route path={`/register-user`} component={RegisterPage} />
               <Route path={`/resellers`} component={ResellerPage} />
+              <Route path={`/editOrder`} component={OrderEditComponent} />
             </Switch>
           </View.ContentLayout>
           <FooterComponent></FooterComponent>

@@ -1,0 +1,21 @@
+.editPage {
+  width: 100%;
+  padding: 10px 0.5rem;
+}
+.headerEditPage {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+}
+
+.editPageHead {
+  font-size: 1.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.editPageFlex {
+  display: grid;
+  grid-row-gap: 10px;
+}

@@ -1,0 +1,60 @@
+.info {
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.infoText {
+  text-align: left;
+  margin-left: 50px;
+  margin-bottom: 40px;
+}
+.infoBox {
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+.dataInfoBox {
+  padding: 20px 20px 20px 200px;
+  display: grid;
+  grid-template-columns: 1.5fr 10.5fr;
+  text-align: left;
+  grid-gap: 10px;
+  grid-column-gap: 20px;
+  border-color: black;
+}
+.col1 {
+  text-align: right;
+}
+.order_status {
+  padding-top: 5px;
+}
+.customer {
+  color: blue;
+}
+.button {
+  height: 30px;
+  color: white;
+  text-align: center;
+  margin: 5px;
+  margin-top: 0px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+}
+.cancelButton {
+  background-color: red;
+}
+.statusButton {
+  background-color: royalblue;
+}
+.infoBox2Buttons {
+  padding: 10px;
+  padding-left: 0px;
+  padding-top: 5px;
+}
+.refundButton {
+  margin-left: 0px;
+  background-color: royalblue;
+}
