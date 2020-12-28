@@ -1,11 +1,8 @@
-img {
+.invoice {
   margin: 0 auto;
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
 }
 .invoicePageHead {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
@@ -19,8 +16,16 @@ img {
   line-height: 25px;
   display: grid;
   grid-template-columns: 4fr 8fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 3px;
+  text-align: center;
   :nth-child(odd) {
     font-weight: 600;
+    text-align: left;
+  }
+  :nth-child(even) {
+    border-left: 1px solid gray;
+    padding-left: 5px;
   }
 }
 .last_row {
@@ -30,16 +35,16 @@ img {
 .payment_info {
   margin-top: 20px;
   text-align: right;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
 }
 .thanks {
   margin-top: 60px;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
 }
 .nice_day_text {
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   margin-top: 6px;
 }
