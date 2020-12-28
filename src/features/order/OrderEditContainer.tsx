@@ -5,6 +5,11 @@ import OrderNotes from "./components/editComponents/Notes/index";
 import Products from "./components/editComponents/Products/index";
 import View from "../../app/common/util/wrapperView";
 import "./OrderEditContainer.scss";
+import { history } from "../..";
+
+const handleInvoiceClick = () => {
+  history.push("/invoice");
+};
 
 const OrderEditComponent = () => {
   return (
@@ -14,7 +19,12 @@ const OrderEditComponent = () => {
         <div className="d-flex justify-content-between">
           <div className="editPageHead">Edit Order Details - 4</div>
           <div>
-            <button className="btn btn-info m-1">
+            <button
+              className="btn btn-info m-1"
+              onClick={() => {
+                handleInvoiceClick();
+              }}
+            >
               <i className="fas fa-file-alt mr-2"></i>Invoice (PDF)
             </button>
             <button className="btn btn-danger m-1">

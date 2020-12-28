@@ -14,6 +14,9 @@ const OrderContainer = lazy(
 const OrderEditComponent = lazy(
   () => import("../../features/order/OrderEditContainer")
 );
+
+const Invoice = lazy(() => import("../../features/order/Invoice"));
+
 import HeaderComponent from "../../app/common/main/HeaderComponent";
 import DashboardPage from "../../features/dashboard/DashboardPage";
 import CustomerPage from "../../features/customer/CustomerPage";
@@ -58,6 +61,7 @@ class Main extends React.Component {
               <Route path={`/register-user`} component={RegisterPage} />
               <Route path={`/resellers`} component={ResellerPage} />
               <Route path={`/editOrder`} component={OrderEditComponent} />
+              <Route path={`/invoice`} component={Invoice} />
             </Switch>
           </View.ContentLayout>
           <FooterComponent></FooterComponent>

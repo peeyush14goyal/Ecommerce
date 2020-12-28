@@ -1,0 +1,45 @@
+img {
+  margin: 0 auto;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+.invoicePageHead {
+  font-size: 1.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.section {
+  padding: 15px;
+}
+.invoice_info_display {
+  margin-bottom: 30px;
+  line-height: 25px;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  :nth-child(odd) {
+    font-weight: 600;
+  }
+}
+.last_row {
+  font-size: 15px;
+  font-weight: bolder;
+}
+.payment_info {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 20px;
+  font-weight: 700;
+}
+.thanks {
+  margin-top: 60px;
+  font-size: 30px;
+  text-align: center;
+}
+.nice_day_text {
+  font-size: 25px;
+  text-align: center;
+  margin-top: 6px;
+}
