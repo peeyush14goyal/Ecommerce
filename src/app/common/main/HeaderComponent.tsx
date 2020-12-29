@@ -7,7 +7,8 @@ const HeaderComponent: React.FC = () => {
   const { logout } = rootStore.userStore;
   const [userDropdown, setuserDropdown] = useState(false);
 
-  document.onclick = function yourFunc(e: any) {
+  // Capture on click event and setting of state for user dropdown component
+  document.onclick = function (e: any) {
     if (userDropdown && e.target.id !== "userDropDown") {
       setuserDropdown(false);
     }

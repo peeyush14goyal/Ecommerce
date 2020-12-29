@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 interface IProps {}
 
 const SideNavComponent: React.FC<IProps> = (props) => {
+  // Two different states for different togglles
   const [toggleCssCat, settoggleCssCat] = useState(false);
   const [toggleCssSys, settoggleCssSys] = useState(false);
 
