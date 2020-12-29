@@ -3,9 +3,15 @@ import React, { useContext, useState } from "react";
 import { RootStoreContext } from "../../stores/rootStore";
 
 const HeaderComponent: React.FC = () => {
-    const rootStore = useContext(RootStoreContext);
-    const { logout } = rootStore.userStore;
+  const rootStore = useContext(RootStoreContext);
+  const { logout } = rootStore.userStore;
   const [userDropdown, setuserDropdown] = useState(false);
+
+  document.onclick = function yourFunc(e: any) {
+    if (userDropdown && e.target.id !== "userDropDown") {
+      setuserDropdown(false);
+    }
+  };
 
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -127,7 +133,11 @@ const HeaderComponent: React.FC = () => {
         <li className="nav-item dropdown">
           <a
             className="nav-link"
-            onClick={() => setuserDropdown(!userDropdown)}
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              !userDropdown ? setuserDropdown(true) : setuserDropdown(false);
+            }}
+            id="userDropDown"
           >
             <i className="far fa-user"></i> Ashutosh Sharma
             <i className="fas fa-chevron-down"></i>
@@ -138,11 +148,14 @@ const HeaderComponent: React.FC = () => {
               style={{ left: "inherit", right: "0 px" }}
             >
               <a className="dropdown-item dropdown-footer">
-                <p>Role</p> 
+                <p>Role</p>
               </a>
 
               <div className="dropdown-divider"></div>
-              <a onClick={logout} className="dropdown-item dropdown-footer cursor-pointer">
+              <a
+                onClick={logout}
+                className="dropdown-item dropdown-footer cursor-pointer"
+              >
                 Logout
               </a>
             </div>

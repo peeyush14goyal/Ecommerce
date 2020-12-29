@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 interface IProps {}
 
 const SideNavComponent: React.FC<IProps> = (props) => {
-    const [toggleCss, settoggleCss] = useState(false);
+  const [toggleCssCat, settoggleCssCat] = useState(false);
+  const [toggleCssSys, settoggleCssSys] = useState(false);
 
-    const _toggleNav = () =>{
-        settoggleCss(!toggleCss);
-    }
+  const _toggleNavCat = () => {
+    settoggleCssCat(!toggleCssCat);
+  };
+  const _toggleNavSys = () => {
+    settoggleCssSys(!toggleCssSys);
+  };
 
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -24,24 +28,28 @@ const SideNavComponent: React.FC<IProps> = (props) => {
                 <p>Home</p>
               </a>
             </li>
-            <li className="nav-item has-treeview" onClick={_toggleNav}>
-              <a className="nav-link active">
+            <li className="nav-item has-treeview" onClick={_toggleNavCat}>
+              <a className="nav-link active" style={{ cursor: "pointer" }}>
                 <i className="nav-icon fa fa-book"></i>
                 <p>
                   Catalog
                   <i className="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul className={toggleCss?'nav nav-treeview d-block':'nav nav-treeview'}>
+              <ul
+                className={
+                  toggleCssCat ? "nav nav-treeview d-block" : "nav nav-treeview"
+                }
+              >
                 <li className="nav-item">
                   <Link className="nav-link" to="/category">
-                  <i className="far fa-circle nav-icon"></i>
+                    <i className="far fa-circle nav-icon"></i>
                     <p>Category</p>
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/product-list">
-                  <i className="far fa-circle nav-icon"></i>
+                    <i className="far fa-circle nav-icon"></i>
                     <p>Product</p>
                   </Link>
                 </li>
@@ -50,33 +58,37 @@ const SideNavComponent: React.FC<IProps> = (props) => {
             <li className="nav-item has-treeview">
               <Link className="nav-link active" to="/customers">
                 <i className="nav-icon fas fa-user"></i>
-                    <p>Customer</p>
+                <p>Customer</p>
               </Link>
             </li>
             <li className="nav-item has-treeview">
               <Link className="nav-link active" to="/resellers">
                 <i className="nav-icon fas fa-user"></i>
-                    <p>Reseller</p>
+                <p>Reseller</p>
               </Link>
             </li>
             <li className="nav-item has-treeview">
               <Link className="nav-link active" to="/orders">
                 <i className="nav-icon fas fa-clipboard-list"></i>
-                    <p>Order</p>
+                <p>Order</p>
               </Link>
             </li>
-            <li className="nav-item has-treeview" onClick={_toggleNav}>
-              <a className="nav-link active">
+            <li className="nav-item has-treeview" onClick={_toggleNavSys}>
+              <a className="nav-link active" style={{ cursor: "pointer" }}>
                 <i className="nav-icon fas fa-cube"></i>
                 <p>
                   System
                   <i className="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul className={toggleCss?'nav nav-treeview d-block':'nav nav-treeview'}>
+              <ul
+                className={
+                  toggleCssSys ? "nav nav-treeview d-block" : "nav nav-treeview"
+                }
+              >
                 <li className="nav-item">
                   <Link className="nav-link" to="/users">
-                  <i className="far fa-circle nav-icon"></i>
+                    <i className="far fa-circle nav-icon"></i>
                     <p>User</p>
                   </Link>
                 </li>
