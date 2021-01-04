@@ -30,7 +30,7 @@ const SideNavComponent: React.FC<IProps> = (props) => {
               </a>
             </li>
             <li className="nav-item has-treeview" onClick={_toggleNavCat}>
-              <a className="nav-link active" style={{ cursor: "pointer" }}>
+              <a className="nav-link active cursor-pointer">
                 <i className="nav-icon fa fa-book"></i>
                 <p>
                   Catalog

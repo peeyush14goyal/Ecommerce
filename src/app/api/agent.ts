@@ -21,7 +21,7 @@ axios.interceptors.response.use(undefined, (error) => {
   if (
     status === 401 &&
     headers["www-authenticate"] ===
-    'Bearer error="invalid_token", error_description="The token is expired"'
+      'Bearer error="invalid_token", error_description="The token is expired"'
   ) {
     window.localStorage.removeItem("jwt");
     history.push("/");
@@ -71,7 +71,7 @@ const User = {
     param: IUserSearch
   ): Promise<IPagedUser> =>
     requests.post(
-      `:8001/identity-service/page/${page}/page-size/${pageSize}/users`,
+      `:8003/identity-service/page/${page}/page-size/${pageSize}/users`,
       param
     ),
 };
@@ -82,14 +82,19 @@ const Product = {
     pageSize: number,
     param: IProductSearch
   ): Promise<IPagedProduct> =>
-    requests.post(
-      `:8001/catalog-service/product/page/${page}/page-size/${pageSize}/products`,
-      param
-    ),
+    param
+      ? requests.post(
+          `:8003/catalog-service/product/page/${page}/page-size/${pageSize}/category/-1/products`,
+          param
+        )
+      : requests.post(
+          `:8003/catalog-service/product/page/${page}/page-size/${pageSize}/category/-1/products`,
+          {}
+        ),
   getCategories: (): Promise<ICategory[]> =>
-    requests.get(`:8001/api/categories`),
+    requests.get(`:8003/catalog-service/category/categories`),
   addProduct: (payload: any): Promise<ICategory[]> =>
-    requests.post(`:8001/catalog-service/product/save`, payload),
+    requests.post(`:8003/product/save`, payload),
   uploadPhoto: (id: string, photo: Blob): Promise<IApiResponse> =>
     requests.postForm(`/photos/${id}`, photo),
 };
@@ -100,24 +105,34 @@ const Category = {
     pageSize: number,
     param: ICategorySearch
   ): Promise<IPagedCategory> =>
-    requests.post(
-      `:8001/catalog-service/category/page/${page}/page-size/${pageSize}/categories`,
-      param
-    ),
+    param
+      ? requests.post(
+          `:8003/catalog-service/category/page/${page}/page-size/${pageSize}/categories`,
+          param
+        )
+      : requests.post(
+          `:8003/catalog-service/category/page/${page}/page-size/${pageSize}/categories`, //for initial call if param is null then passing
+          {} //empty array
+        ),
 
   getCategories: (): Promise<ICategory[]> =>
-    requests.get(`:8001/api/categories`),
+    requests.get(`:8003/catalog-service/category/categories`),
   addEditCategory: (category: ICategory): Promise<IApiResponse> =>
-    requests.post(`:8001/catalog-service/product/save`, category),
+    requests.post(`:8003/catalog-service/product/save`, category),
   uploadPhoto: (id: string, photo: Blob): Promise<IApiResponse> =>
     requests.postForm(`/photos/${id}`, photo),
 };
 
 const Order = {
-  getOrderList: (page: number,
+  getOrderList: (
+    page: number,
     pageSize: number,
-    param: ICategorySearch): Promise<ICategory[]> =>
-    requests.post(`:8001/order-service/page/${page}/page-size/${pageSize}/orders`, param)
+    param: ICategorySearch
+  ): Promise<ICategory[]> =>
+    requests.post(
+      `:8003/order-service/page/${page}/page-size/${pageSize}/orders`,
+      param
+    ),
 };
 
 const Customer = {
@@ -150,5 +165,5 @@ export default {
   Product,
   Order,
   Customer,
-  Reseller
+  Reseller,
 };

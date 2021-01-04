@@ -90,9 +90,13 @@ const CategoryTable: React.FC<IProps> = ({
                           }
                         />
                       </td>
-                      <td><img
-                              src={`${process.env.REACT_APP_IMAGE_URL}/Categories/thumbnail/${category.picture}`}
-                              width="48" alt="Product img" /></td>
+                      <td>
+                        <img
+                          src={`${process.env.REACT_APP_IMAGE_URL}/Categories/thumbnail/${category.picture}`}
+                          width="48"
+                          alt="Product img"
+                        />
+                      </td>
                       <td>{category.name}</td>
                       <td>{category.description}</td>
                       <td>

@@ -133,8 +133,7 @@ const HeaderComponent: React.FC = () => {
         </li>
         <li className="nav-item dropdown">
           <a
-            className="nav-link"
-            style={{ cursor: "pointer" }}
+            className="nav-link cursor-pointer"
             onClick={() => {
               !userDropdown ? setuserDropdown(true) : setuserDropdown(false);
             }}

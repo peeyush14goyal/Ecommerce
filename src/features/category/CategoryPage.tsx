@@ -6,11 +6,19 @@ import { RootStoreContext } from "../../app/stores/rootStore";
 import CategoryTable from "./CategoryTable";
 import SearchForm from "./SearchForm";
 
-const PAGE_LIMIT =+process.env.REACT_APP_PAGE_SIZE!;
+const PAGE_LIMIT = +process.env.REACT_APP_PAGE_SIZE!;
 
 const CategoryPage = () => {
   const rootStore = useContext(RootStoreContext);
-  const { pagedCategories, loadCategories, setSelectedCategory, clearCategory, editSelected } = rootStore.categoryStore;
+  const {
+    pagedCategories,
+    categories,
+    loadCategories,
+    setSelectedCategory,
+    clearCategory,
+    editSelected,
+    allCategories,
+  } = rootStore.categoryStore;
   const [searchParam, setSearchParam] = useState<ICategorySearch | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [editItemSelected, setEditItemSelected] = useState(false);
@@ -36,29 +44,31 @@ const CategoryPage = () => {
       sortBy: searchParam?.sortBy,
       sortDirection: searchParam?.sortDirection,
     };
+    console.log("Before Search param is ", searchParam);
     setSearchParam(searchValue);
+    console.log("Search Param is ", searchParam);
     await loadCategories(currentPage, PAGE_LIMIT, searchParam!);
   };
 
-  const _handleSelectedCategory =(checked:boolean,category:ICategory)=>{
-    if(checked){
+  const _handleSelectedCategory = (checked: boolean, category: ICategory) => {
+    if (checked) {
       setSelectedCategory(category);
       setEditItemSelected(true);
       editSelected(true);
-    }else{
+    } else {
       setEditItemSelected(false);
       clearCategory();
       editSelected(false);
     }
-  }
+  };
 
-  const _handleAdd =()=>{
-      clearCategory();
-      editSelected(false);
-  }
+  const _handleAdd = () => {
+    clearCategory();
+    editSelected(false);
+  };
 
   useEffect(() => {
-      loadCategories(currentPage, PAGE_LIMIT, searchParam!);
+    loadCategories(currentPage, PAGE_LIMIT, searchParam!);
   }, [loadCategories]);
 
   return (

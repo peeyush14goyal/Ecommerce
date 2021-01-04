@@ -28,11 +28,13 @@ export default class CategoryStore {
         pageSize,
         param
       );
+      console.log("Search categories param : ", param);
       runInAction("loading categories", () => {
         this.pagedCategories = categories;
       });
       this.rootStore.commonStore.setLoader(false);
     } catch (error) {
+      console.log("Error is ", error);
       this.rootStore.commonStore.setLoader(false);
     }
   };
@@ -41,6 +43,7 @@ export default class CategoryStore {
     try {
       this.rootStore.commonStore.setLoader(true);
       const categories = await agent.Category.getCategories();
+      console.log("get All categories ", categories);
       runInAction("loading categories", () => {
         this.categories = categories;
       });
