@@ -16,6 +16,7 @@ const CategoryPage = () => {
     loadCategories,
     setSelectedCategory,
     clearCategory,
+    addCategory,
     editSelected,
     allCategories,
   } = rootStore.categoryStore;
@@ -44,9 +45,7 @@ const CategoryPage = () => {
       sortBy: searchParam?.sortBy,
       sortDirection: searchParam?.sortDirection,
     };
-    console.log("Before Search param is ", searchParam);
     setSearchParam(searchValue);
-    console.log("Search Param is ", searchParam);
     await loadCategories(currentPage, PAGE_LIMIT, searchParam!);
   };
 

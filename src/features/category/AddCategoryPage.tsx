@@ -22,7 +22,7 @@ const AddCategoryPage = () => {
     addCategory,
     categories,
     allCategories,
-    edited
+    edited,
   } = rootStore.categoryStore;
 
   const [imageUpload, setImageUpload] = useState(false);
@@ -33,28 +33,47 @@ const AddCategoryPage = () => {
     setImage(photo);
   };
 
+  const handleAddSubmit = (values: ICategory) => {
+    const addValue: ICategory = {
+      id: "2",
+      name: values.name,
+      description: values?.description,
+      picture: values?.picture,
+      priceRange: values?.priceRange,
+      isPublished: values?.isPublished,
+      showOnHomeScreen: values?.showOnHomeScreen,
+      parentCategoryId: values?.parentCategoryId,
+      displayOrder: values?.displayOrder,
+    };
+    console.log(addValue);
+    addCategory(addValue);
+  };
+
   useEffect(() => {
     allCategories();
   }, [allCategories]);
 
   return (
     <Fragment>
-      <BreadCrumb pageName= {edited?"Edit Category" : "Add Category" }/>
+      <BreadCrumb pageName={edited ? "Edit Category" : "Add Category"} />
 
       <section className="content">
         <div className="row">
           <div className="col-md-12">
             <div className="card card-primary">
               <div className="card-header pt-2 pb-2">
-                <h3 className="card-title">{edited?"Edit Category" : "Add Category" }</h3>
+                <h3 className="card-title">
+                  {edited ? "Edit Category" : "Add Category"}
+                </h3>
               </div>
               <div className="card-body">
                 <Form
-                  onSubmit={(values: ICategory) =>
-                    addCategory(values).catch((error) => ({
-                      [FORM_ERROR]: error,
-                    }))
-                  }
+                  onSubmit={(values: ICategory) => {
+                    handleAddSubmit(values);
+                    // addCategory(values).catch((error) => ({
+                    //   [FORM_ERROR]: error,
+                    // }));
+                  }}
                   validate={validate}
                   render={({
                     handleSubmit,

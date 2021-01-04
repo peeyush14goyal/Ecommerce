@@ -28,7 +28,6 @@ export default class CategoryStore {
         pageSize,
         param
       );
-      console.log("Search categories param : ", param);
       runInAction("loading categories", () => {
         this.pagedCategories = categories;
       });
@@ -43,7 +42,6 @@ export default class CategoryStore {
     try {
       this.rootStore.commonStore.setLoader(true);
       const categories = await agent.Category.getCategories();
-      console.log("get All categories ", categories);
       runInAction("loading categories", () => {
         this.categories = categories;
       });
@@ -73,11 +71,11 @@ export default class CategoryStore {
   @action addCategory = async (category: ICategory) => {
     try {
       this.rootStore.commonStore.setLoader(true);
-      console.log(category);
-      // const result = await agent.Category.addEditCategory(category);
-      // runInAction('category saved', () => {
-      //   toast.success(result.messages[0]);
-      // });
+
+      const result = await agent.Category.addEditCategory(category);
+      runInAction("category saved", () => {
+        toast.success(result.messages[0]);
+      });
       this.category = category;
       this.rootStore.commonStore.setLoader(false);
     } catch (error) {

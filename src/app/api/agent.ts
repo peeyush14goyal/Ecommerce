@@ -118,7 +118,7 @@ const Category = {
   getCategories: (): Promise<ICategory[]> =>
     requests.get(`:8003/catalog-service/category/categories`),
   addEditCategory: (category: ICategory): Promise<IApiResponse> =>
-    requests.post(`:8003/catalog-service/product/save`, category),
+    requests.post(`:8003/product/save`, category),
   uploadPhoto: (id: string, photo: Blob): Promise<IApiResponse> =>
     requests.postForm(`/photos/${id}`, photo),
 };
@@ -153,10 +153,15 @@ const Reseller = {
     pageSize: number,
     param: any
   ): Promise<IPagedReseller> =>
-    requests.post(
-      `:8001/cusomer-service/page/${page}/page-size/${pageSize}/resellers`,
-      param
-    ),
+    param
+      ? requests.post(
+          `:8005/customer-service/page/${page}/page-size/${pageSize}/resellers`,
+          param
+        )
+      : requests.post(
+          `:8005/customer-service/page/${page}/page-size/${pageSize}/resellers`,
+          {}
+        ),
 };
 
 export default {
