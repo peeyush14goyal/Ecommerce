@@ -21,6 +21,8 @@ export default class ResellerStore {
         pageSize,
         param
       );
+
+      console.log("Resellers are ", resellers);
       runInAction("loading Resellers", () => {
         this.isResellerLoading = false;
         this.pagedrResellers = resellers;

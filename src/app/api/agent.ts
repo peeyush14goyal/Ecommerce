@@ -11,6 +11,7 @@ import { IPagedReseller } from "../models/reseller";
 const baseUrl = process.env.REACT_APP_API_URL;
 
 axios.interceptors.response.use(undefined, (error) => {
+  console.log("Error is in axios ", error);
   if (error.message === "Network Error" && !error.response) {
     toast.error("Network error - make sure API is running!");
   }
@@ -138,6 +139,9 @@ const Order = {
           `:8004/order-service/page/${page}/page-size/${pageSize}/orders`,
           {}
         ),
+
+  addOrder: (payload: any): Promise<ICategory[]> =>
+    requests.post(`:8004/order/save`, payload),
 };
 
 const Customer = {

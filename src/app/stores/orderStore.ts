@@ -18,6 +18,7 @@ export default class OrderStore {
     try {
       this.isLoading = true;
       const products = await agent.Order.getOrderList(page, pageSize, param);
+      console.log("Orders are ", products);
       runInAction("loading Products", () => {
         this.isLoading = false;
         this.pagedOrders = products;
@@ -39,6 +40,10 @@ export default class OrderStore {
 
   @action addOrder = async (data: any) => {
     try {
+      console.log("inside Add Order");
+      const response = await agent.Order.addOrder(data);
+      console.log(response);
+      // addProduct
     } catch (error) {}
   };
 }
