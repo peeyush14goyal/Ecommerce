@@ -129,10 +129,15 @@ const Order = {
     pageSize: number,
     param: ICategorySearch
   ): Promise<ICategory[]> =>
-    requests.post(
-      `:8003/order-service/page/${page}/page-size/${pageSize}/orders`,
-      param
-    ),
+    param
+      ? requests.post(
+          `:8004/order-service/page/${page}/page-size/${pageSize}/orders`,
+          param
+        )
+      : requests.post(
+          `:8004/order-service/page/${page}/page-size/${pageSize}/orders`,
+          {}
+        ),
 };
 
 const Customer = {

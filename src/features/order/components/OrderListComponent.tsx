@@ -61,124 +61,122 @@ const OrderListComponent = (props: any) => {
 
                 <tbody>
                   {props.pagedOrders &&
-                    props.pagedOrders.products.map(
-                      (indProduct: any, i: any) => (
-                        <tr key={i}>
-                          {/* <td>
+                    props.pagedOrders.orders.map((indProduct: any, i: any) => (
+                      <tr key={i}>
+                        {/* <td>
                                                 <input type="checkbox"
                                                     name={`deleteRadio${i + 1}`}
                                                     id={`optionsRadios${i + 1}`}
                                                     value="" />
                                             </td> */}
-                          <td>{indProduct.id}</td>
-                          <td>
-                            {props.isEditable &&
-                            props.selectedItem.id === indProduct.id ? (
-                              <>
-                                <select
-                                  className="form-control form-control-sm"
-                                  name="orderStatus"
-                                  value={indProduct.orderStatus}
-                                >
-                                  {OrderStatusData.map((a) => (
-                                    <option key={a} value={a}>
-                                      {a}
-                                    </option>
-                                  ))}
-                                </select>
-                              </>
-                            ) : (
-                              <>{indProduct.orderStatus}</>
-                            )}
-                          </td>
-                          <td>
-                            {props.isEditable &&
-                            props.selectedItem.id === indProduct.id ? (
-                              <>
-                                <select
-                                  className="form-control form-control-sm"
-                                  name="paymentStatus"
-                                  value={indProduct.paymentStatus}
-                                >
-                                  {PaymentStatusData.map((a) => (
-                                    <option key={a} value={a}>
-                                      {a}
-                                    </option>
-                                  ))}
-                                </select>
-                              </>
-                            ) : (
-                              <> {indProduct.paymentStatus}</>
-                            )}
-                          </td>
-                          <td>
-                            {props.isEditable &&
-                            props.selectedItem.id === indProduct.id ? (
-                              <>
-                                <select
-                                  className="form-control form-control-sm"
-                                  name="shippingStatus"
-                                  value={indProduct.shippingStatus}
-                                >
-                                  {ShippingStatusData.map((a) => (
-                                    <option key={a} value={a}>
-                                      {a}
-                                    </option>
-                                  ))}
-                                </select>
-                              </>
-                            ) : (
-                              <>{indProduct.shippingStatus}</>
-                            )}
-                          </td>
-                          <td>
-                            {indProduct.customerName}
-                            <span className="d-block text-gray mt-1">
-                              <small>{indProduct.customerEmail}</small>
-                            </span>
-                          </td>
-                          <td>{indProduct.orderDate}</td>
-                          <td>{indProduct.orderTotal}</td>
-                          <td>
-                            {props.isEditable &&
-                            props.selectedItem.id === indProduct.id ? (
-                              <>
-                                <button
-                                  type="button"
-                                  className="btn btn-sm btn-outline-secondary mr-2"
-                                >
-                                  Save
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn btn-sm btn-outline-secondary mr-2"
-                                  onClick={() => onCancelEvent()}
-                                >
-                                  Cancel
-                                </button>
-                              </>
-                            ) : (
-                              <div className="d-flex flex-column align-items-center ">
-                                <button
-                                  type="button"
-                                  className="btn btn-sm btn-outline-secondary m-1"
-                                  onClick={(e) => onEditAction(e, indProduct)}
-                                >
-                                  Edit
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn btn-sm btn-outline-secondary m-1"
-                                  onClick={() => onDetailClick()}
-                                >
-                                  Detail
-                                </button>
-                              </div>
-                            )}
-                          </td>
-                        </tr>
-                      )
-                    )}
+                        <td>{indProduct.id}</td>
+                        <td>
+                          {props.isEditable &&
+                          props.selectedItem.id === indProduct.id ? (
+                            <>
+                              <select
+                                className="form-control form-control-sm"
+                                name="orderStatus"
+                                value={indProduct.orderStatus}
+                              >
+                                {OrderStatusData.map((a) => (
+                                  <option key={a} value={a}>
+                                    {a}
+                                  </option>
+                                ))}
+                              </select>
+                            </>
+                          ) : (
+                            <>{indProduct.orderStatus}</>
+                          )}
+                        </td>
+                        <td>
+                          {props.isEditable &&
+                          props.selectedItem.id === indProduct.id ? (
+                            <>
+                              <select
+                                className="form-control form-control-sm"
+                                name="paymentStatus"
+                                value={indProduct.paymentStatus}
+                              >
+                                {PaymentStatusData.map((a) => (
+                                  <option key={a} value={a}>
+                                    {a}
+                                  </option>
+                                ))}
+                              </select>
+                            </>
+                          ) : (
+                            <> {indProduct.paymentStatus}</>
+                          )}
+                        </td>
+                        <td>
+                          {props.isEditable &&
+                          props.selectedItem.id === indProduct.id ? (
+                            <>
+                              <select
+                                className="form-control form-control-sm"
+                                name="shippingStatus"
+                                value={indProduct.shippingStatus}
+                              >
+                                {ShippingStatusData.map((a) => (
+                                  <option key={a} value={a}>
+                                    {a}
+                                  </option>
+                                ))}
+                              </select>
+                            </>
+                          ) : (
+                            <>{indProduct.shippingStatus}</>
+                          )}
+                        </td>
+                        <td>
+                          {indProduct.customerName}
+                          <span className="d-block text-gray mt-1">
+                            <small>{indProduct.customerEmail}</small>
+                          </span>
+                        </td>
+                        <td>{indProduct.orderDate}</td>
+                        <td>{indProduct.orderTotal}</td>
+                        <td>
+                          {props.isEditable &&
+                          props.selectedItem.id === indProduct.id ? (
+                            <>
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-outline-secondary mr-2"
+                              >
+                                Save
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-outline-secondary mr-2"
+                                onClick={() => onCancelEvent()}
+                              >
+                                Cancel
+                              </button>
+                            </>
+                          ) : (
+                            <div className="d-flex flex-column align-items-center ">
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-outline-secondary m-1"
+                                onClick={(e) => onEditAction(e, indProduct)}
+                              >
+                                Edit
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-outline-secondary m-1"
+                                onClick={() => onDetailClick()}
+                              >
+                                Detail
+                              </button>
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
