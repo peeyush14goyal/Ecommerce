@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import Pager from "../../../app/common/table/Pager";
+import status from "./statusId";
 import {
   OrderStatusData,
   PaymentStatusData,
@@ -62,58 +63,9 @@ const OrderListComponent = (props: any) => {
                 <tbody>
                   {props.pagedOrders &&
                     props.pagedOrders.orders.map((indProduct: any, i: any) => {
-                      let orderStatusText,
-                        paymentStatusText,
-                        shippingStatusText;
                       let displayDate = indProduct.createdAt.substr(0, 10);
                       let displayTime = indProduct.createdAt.substr(11, 5);
 
-                      switch (indProduct.orderStatusId + 1) {
-                        case 1:
-                          orderStatusText = "Pending";
-                          break;
-                        case 2:
-                          orderStatusText = "Processing";
-                          break;
-                        case 3:
-                          orderStatusText = "Complete";
-                          break;
-                        case 4:
-                          orderStatusText = "Cancelled";
-                          break;
-                        default:
-                          orderStatusText = "Invalid";
-                      }
-                      switch (indProduct.paymentStatusId + 1) {
-                        case 1:
-                          paymentStatusText = "Paid";
-                          break;
-                        case 2:
-                          paymentStatusText = "Pending";
-                          break;
-                        case 3:
-                          paymentStatusText = "Refund";
-                          break;
-
-                        default:
-                          paymentStatusText = "Invalid";
-                      }
-                      switch (indProduct.shippingStatusId + 1) {
-                        case 1:
-                          shippingStatusText = "Not yet shipped";
-                          break;
-                        case 2:
-                          shippingStatusText = "Shipping Not Required";
-                          break;
-                        case 3:
-                          shippingStatusText = "Shipped";
-                          break;
-                        case 4:
-                          shippingStatusText = "Delivered";
-                          break;
-                        default:
-                          shippingStatusText = "Invalid";
-                      }
                       return (
                         <tr key={i}>
                           {/* <td>
@@ -131,7 +83,9 @@ const OrderListComponent = (props: any) => {
                                   className="form-control form-control-sm"
                                   name="orderStatus"
                                   // value={indProduct.orderStatus}
-                                  value={orderStatusText}
+                                  value={
+                                    status.orderStatus[indProduct.orderStatusId]
+                                  }
                                 >
                                   {OrderStatusData.map((a) => (
                                     <option key={a} value={a}>
@@ -141,7 +95,13 @@ const OrderListComponent = (props: any) => {
                                 </select>
                               </>
                             ) : (
-                              <>{/*indProduct.orderStatus*/ orderStatusText}</>
+                              <>
+                                {
+                                  /*indProduct.orderStatus*/ status.orderStatus[
+                                    indProduct.orderStatusId
+                                  ]
+                                }
+                              </>
                             )}
                           </td>
                           <td>
@@ -152,7 +112,11 @@ const OrderListComponent = (props: any) => {
                                   className="form-control form-control-sm"
                                   name="paymentStatus"
                                   //value={indProduct.paymentStatus}
-                                  value={paymentStatusText}
+                                  value={
+                                    status.paymentStatus[
+                                      indProduct.paymentStatusId
+                                    ]
+                                  }
                                 >
                                   {PaymentStatusData.map((a) => (
                                     <option key={a} value={a}>
@@ -163,7 +127,10 @@ const OrderListComponent = (props: any) => {
                               </>
                             ) : (
                               <>
-                                {/*indProduct.paymentStatus*/ paymentStatusText}
+                                {
+                                  /*indProduct.paymentStatus*/ status
+                                    .paymentStatus[indProduct.paymentStatusId]
+                                }
                               </>
                             )}
                           </td>
@@ -175,7 +142,11 @@ const OrderListComponent = (props: any) => {
                                   className="form-control form-control-sm"
                                   name="shippingStatus"
                                   //value={indProduct.shippingStatus}
-                                  value={shippingStatusText}
+                                  value={
+                                    status.shippingStatus[
+                                      indProduct.shippingStatusId
+                                    ]
+                                  }
                                 >
                                   {ShippingStatusData.map((a) => (
                                     <option key={a} value={a}>
@@ -187,7 +158,8 @@ const OrderListComponent = (props: any) => {
                             ) : (
                               <>
                                 {
-                                  /*indProduct.shippingStatus*/ shippingStatusText
+                                  /*indProduct.shippingStatus*/ status
+                                    .shippingStatus[indProduct.shippingStatusId]
                                 }
                               </>
                             )}

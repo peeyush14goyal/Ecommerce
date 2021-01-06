@@ -105,10 +105,11 @@ const OrderFormComponent = (props: any) => {
                                 >
                                   <option value="">Order Status</option>
                                   <option value="pending">Pending</option>
-                                  <option value="delivered">Delivered</option>
-                                  <option value="shipped">Shipped</option>
-                                  <option value="completed">Completed</option>
-                                  <option value="refunded">Refunded</option>
+                                  <option value="processing">Processing</option>
+                                  {/* <option value="delivered">Delivered</option> */}
+                                  {/* <option value="shipped">Shipped</option> */}
+                                  <option value="complete">Complete</option>
+                                  {/* <option value="refunded">Refunded</option> */}
                                   <option value="cancelled">Cancelled</option>
                                 </select>
                               </div>
@@ -131,12 +132,15 @@ const OrderFormComponent = (props: any) => {
                                   className="form-control form-control-sm"
                                   {...input}
                                 >
-                                  <option value="">Order Status</option>
-                                  <option value="pending">Pending</option>
+                                  <option value="">Payment Status</option>
+                                  {/* <option value="pending">Pending</option>
                                   <option value="success">Success</option>
                                   <option value="complete">Complete</option>
                                   <option value="canceled">Canceled</option>
-                                  <option value="rejected">Rejected</option>
+                                  <option value="rejected">Rejected</option> */}
+                                  <option value="paid">Paid</option>
+                                  <option value="pending">Pending</option>
+                                  <option value="refund">Refund</option>
                                 </select>
                               </div>
                             )}
@@ -158,14 +162,19 @@ const OrderFormComponent = (props: any) => {
                                   className="form-control form-control-sm"
                                   {...input}
                                 >
-                                  <option value="">Order Status</option>
+                                  <option value="">Shipping Status</option>
                                   <option value="not yet shipped">
                                     Not Yet Shipped
                                   </option>
-                                  <option value="success">Success</option>
+                                  {/* <option value="success">Success</option>
                                   <option value="complete">Complete</option>
                                   <option value="canceled">Canceled</option>
-                                  <option value="rejected">Rejected</option>
+                                  <option value="rejected">Rejected</option> */}
+                                  <option value="shipping not required">
+                                    Shipping Not Required
+                                  </option>
+                                  <option value="shipped">Shipped</option>
+                                  <option value="delivered">Delivered</option>
                                 </select>
                               </div>
                             )}
