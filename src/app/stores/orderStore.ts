@@ -18,7 +18,6 @@ export default class OrderStore {
     try {
       this.isLoading = true;
       const products = await agent.Order.getOrderList(page, pageSize, param);
-      console.log("Orders are ", products);
       runInAction("loading Products", () => {
         this.isLoading = false;
         this.pagedOrders = products;

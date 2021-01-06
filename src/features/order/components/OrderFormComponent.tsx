@@ -185,12 +185,12 @@ const OrderFormComponent = (props: any) => {
                       </div>
                       <div className="col-lg-6 col-sm-12">
                         <div className="form-group">
-                          <label htmlFor="name">Billing Phone Number</label>
+                          <label htmlFor="name">Billing Phone Email</label>
                           <Field
                             type="email"
                             name="billingEmail"
                             component={TextInput}
-                            placeholder="Enter Billing Phone number"
+                            placeholder="Enter Billing Phone Email"
                           />
                         </div>
                       </div>
